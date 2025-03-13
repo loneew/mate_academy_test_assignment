@@ -6,13 +6,11 @@ import time
 def get_course_links(driver, url):
     driver.get(url)
 
-    # Клік на кнопку для відкриття списку курсів
     courses_button = driver.find_element(By.XPATH, "//button[@data-qa='header-courses-dropdown-button']")
     courses_button.click()
 
     time.sleep(2)
 
-    # Збір усіх посилань на курси
     courses = driver.find_elements(By.XPATH,
                                    "//a[@class='Button_transparentLight__T1185 Button_medium__XjfCa Button_fullWidth__EcevO DropdownProfessionsItem_link__4NmVV show-for-large Button_button__5Fngg']")
 
@@ -25,7 +23,7 @@ def get_course_links(driver, url):
 
 
 def get_course_details(driver, course_url):
-    driver.get(course_url)  # Перехід на сторінку курсу один раз
+    driver.get(course_url)
 
     course_details = {}
 
@@ -66,7 +64,7 @@ def get_course_details(driver, course_url):
 if __name__ == "__main__":
     driver = webdriver.Chrome()
 
-    url = "https://mate.academy"  # Замість цього ви можете використовувати ваш власний URL сторінки
+    url = "https://mate.academy"
 
     course_links = get_course_links(driver, url)
 
